@@ -13,13 +13,13 @@ class Clock extends React.Component {
     }
     
     formatTime(timeInSeconds) {
-        var seconds = timeInSeconds % 60;
-        var minutes = Math.floor(timeInSeconds / 60);
-
         if(this.state.seconds==0){
             clearInterval(this.myInterval);
             this.props.resettime();
         }
+
+        var seconds = timeInSeconds % 60;
+        var minutes = Math.floor(timeInSeconds / 60);
 
         if (seconds < 10) {
             seconds = '0' + seconds;
@@ -44,7 +44,7 @@ class Clock extends React.Component {
     }
 
     componentDidMount(){        
-        this.myInterval= setInterval( ()=>{
+        this.myInterval= setInterval( ()=> {
             this.setState({
                 seconds: this.state.seconds -1
             })
