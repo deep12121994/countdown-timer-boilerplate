@@ -16,6 +16,11 @@ class Clock extends React.Component {
         var seconds = timeInSeconds % 60;
         var minutes = Math.floor(timeInSeconds / 60);
 
+        if(this.state.seconds==0){
+            clearInterval(this.myInterval);
+            this.props.resettime();
+        }
+
         if (seconds < 10) {
             seconds = '0' + seconds;
         }
