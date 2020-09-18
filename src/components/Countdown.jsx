@@ -10,7 +10,7 @@ class Countdown extends React.Component {
             count:0
         }
 
-        this.updatetime = this.update.bind(this);
+        this.update = this.update.bind(this);
         this.resetstate = this.resetstate.bind(this);
     }
 

@@ -28,7 +28,6 @@ class Clock extends React.Component {
     }
 
     render() {
-        var {timeInSeconds} = this.props;
         //Keep the classes name. Try to inject your code and do not remove existing code
         return (
             <div className="clock">
