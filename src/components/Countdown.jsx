@@ -20,7 +20,7 @@ class Countdown extends React.Component {
         })
     }
 
-    resetstate(count_timer) {
+    resetstate(count) {
         this.setState({
             count: 0
         })
