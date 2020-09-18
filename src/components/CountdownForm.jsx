@@ -5,11 +5,8 @@ class CountdownForm extends React.Component {
        //This will give you string for seconds. Do not remove refs
         e.preventDefault()
         var secondsStr = this.refs.seconds.value;
-        if(secondsStr>0)
-        {
-            this.props.onSetCountdownTime(secondsStr)
-            this.refs.seconds.value="";
-        }
+        let time = +secondsStr;
+        if(time && secondsStr !== '')this.props.onSetCountdownTime(+secondsStr);
        
     }
 

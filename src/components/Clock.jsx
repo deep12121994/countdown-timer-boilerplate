@@ -4,19 +4,17 @@ class Clock extends React.Component {
 
     constructor(props)
     {
-        super(props)
+        super(props);
 
         var {timeInSeconds} = this.props
         this.state = {
-            seconds: timeInSeconds
+
+            clock: '';
+            timer:0,
         }
     }
     
     formatTime(timeInSeconds) {
-        if(this.state.seconds===0){
-            clearInterval(this.myInterval);
-            this.props.resettime();
-        }
 
         var seconds = timeInSeconds % 60;
         var minutes = Math.floor(timeInSeconds / 60);
@@ -32,30 +30,48 @@ class Clock extends React.Component {
         return minutes + ':' + seconds;
     }
 
+    fuc = () => {
+        this.myInterval = setInterval (() => {
+            this.setState((prev) => {
+                return {
+                    timer: prev - 1,
+                    clock: this.formatTime(prev.timer-1),
+                };
+            });
+
+            if(this.state.timer <= 0)
+            {
+                clearInterval(this.myInterval);
+                this.props.reset();
+            }
+        },1000);
+    }
+
+
+    componentDidMount(){        
+        this.setState({timer: this.props.timeInSeconds}, () => {
+            this.fuc();
+        });     
+    }
+
+
+    componentWillUnmount(){
+        clearInterval(this.myInterval);
+    }
+
     render() {
+        var { timeInSeconds } = this.props;
         //Keep the classes name. Try to inject your code and do not remove existing code
         return (
             <div className="clock">
                 <span className="clock-text">
-                <h1>{this.formatTime(this.state.seconds)}</h1> 
+                <h1>{this.state.clock}</h1> 
                 </span>
             </div>
         );
     }
 
-    componentDidMount(){        
-        this.myInterval= setInterval( ()=> {
-            this.setState({
-                seconds: this.state.seconds -1
-            })
-        },1000)
-    }
-    componentWillUnmount(){
-        clearInterval(this.myInterval)
-        this.setState({
-            seconds: 0
-        })
-    }
+  
 }
 
 
