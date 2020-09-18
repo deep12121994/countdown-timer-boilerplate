@@ -13,7 +13,7 @@ class Clock extends React.Component {
     }
     
     formatTime(timeInSeconds) {
-        if(this.state.seconds==0){
+        if(this.state.seconds===0){
             clearInterval(this.myInterval);
             this.props.resettime();
         }
