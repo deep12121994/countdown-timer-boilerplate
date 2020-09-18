@@ -9,7 +9,7 @@ class Clock extends React.Component {
         var {timeInSeconds} = this.props
         this.state = {
 
-            clock: '';
+            clock: '',
             timer:0,
         }
     }

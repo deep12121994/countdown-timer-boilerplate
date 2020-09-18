@@ -7,8 +7,8 @@ class Countdown extends React.Component {
     {
         super(props)
         this.state = {
-            count:0
-        }
+            count:0,
+        };
 
        this.onSetCountdownTime = this.onSetCountdownTime.bind(this);
     }
@@ -23,7 +23,7 @@ class Countdown extends React.Component {
         this.setState(() => {
             return {
                 count: str,
-            }
+            };
         });
     };
 
